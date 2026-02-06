@@ -1,8 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #faf8f5;
+  --foreground: #1a1814;
+  --muted: #f0ede8;
+  --muted-foreground: #57534e;
+  --card: #ffffff;
+  --border: #e5e2dc;
+  --accent: #0f766e;
+  --accent-soft: #ccfbf1;
+  --accent-fg: #ffffff;
+  --glow: #14b8a6;
 }
 
 @theme inline {
@@ -10,17 +18,36 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-fraunces);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0f0e0c;
+    --foreground: #faf8f5;
+    --muted: #1c1916;
+    --muted-foreground: #a8a29e;
+    --card: #1a1814;
+    --border: #2d2a26;
+    --accent: #2dd4bf;
+    --accent-soft: #134e4a;
+    --accent-fg: #0f0e0c;
+    --glow: #5eead4;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Subtle grid texture */
+.page-pattern {
+  background-image:
+    linear-gradient(to right, var(--border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: -1px -1px;
+  opacity: 0.4;
 }
