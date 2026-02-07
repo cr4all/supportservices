@@ -1,4 +1,5 @@
 import { OpenInAppButton } from "@/components/OpenInAppButton";
+import { ChatLauncher } from "@/components/chat/ChatLauncher";
 import { SupportForm } from "@/components/SupportForm";
 import { env } from "@/lib/env";
 
@@ -34,6 +35,13 @@ export function ContactPageContent() {
           <OpenInAppButton />
           <p className="mt-3 text-sm text-[var(--muted-foreground)]">
             For the fastest and most secure communication, please use the app.
+          </p>
+        </section>
+
+        <section className="mb-10">
+          <ChatLauncher />
+          <p className="mt-2 text-xs text-[var(--muted-foreground)]">
+            Secure web chat for official contact and support. No account needed.
           </p>
         </section>
 
