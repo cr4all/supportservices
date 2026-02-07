@@ -33,7 +33,9 @@ if (globalThis.mongoose === undefined) {
 export async function connectDb(): Promise<typeof mongoose> {
   if (cached.conn) return cached.conn;
   if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI);
+    const uri = MONGODB_URI;
+    if (!uri) throw new Error("Please set MONGODB_URI in .env for the web chat feature (MongoDB).");
+    cached.promise = mongoose.connect(uri);
   }
   cached.conn = await cached.promise;
   return cached.conn;
