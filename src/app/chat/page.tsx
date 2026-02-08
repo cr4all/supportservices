@@ -4,7 +4,7 @@ import { ChatLauncher } from "@/components/chat/ChatLauncher";
 
 export const metadata: Metadata = {
   title: "Web Chat",
-  description: "Secure web chat for official contact and support. No account needed.",
+  description: "Secure web chat for official contact and support. DESCRIBE YOUR SECURITY ISSUE.",
 };
 
 function ChatBubbleIcon() {
@@ -33,7 +33,9 @@ export default function ChatPage() {
             </h1>
             <p className="mt-3 max-w-md text-[var(--muted-foreground)] sm:text-base">
             Welcome.
-            You are now connected to secure support.Please outline the security issue or incident you’re facing.Do not include sensitive credentials.
+            You are now connected to secure support.<br />
+            Please outline the security issue or incident you’re facing.<br />
+            Do not include sensitive credentials.
             </p>
             <div className="mt-8">
               <ChatLauncher />

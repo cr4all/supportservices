@@ -80,7 +80,7 @@ export default function Home() {
                 Support services
               </h1>
               <p className="mt-3 max-w-md text-lg leading-relaxed text-[var(--muted-foreground)] sm:mt-4">
-                This is my official contact page. Use the app or the options below to get in touch.
+                This is our official contact page. Use the app or the options below to get in touch.
               </p>
             </div>
           </div>

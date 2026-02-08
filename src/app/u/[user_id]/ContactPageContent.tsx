@@ -12,7 +12,7 @@ export function ContactPageContent() {
             Official Contact Page
           </h1>
           <p className="mt-3 text-[var(--muted-foreground)]">
-            This is my official contact and support page.
+            This is our official contact and support page.
           </p>
         </header>
 

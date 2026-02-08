@@ -197,7 +197,7 @@ export function ChatPanel({
     <div
       className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 p-0 sm:items-center sm:p-4"
       role="dialog"
-      aria-label="Secure Web Chat"
+      aria-label="Secure Support - How can we help?"
       onClick={onClose}
     >
       <div
@@ -212,7 +212,7 @@ export function ChatPanel({
               </svg>
             </div>
             <div>
-              <h2 className="text-base font-semibold">Secure Web Chat</h2>
+              <h2 className="text-base font-semibold">Secure Support - How can we help?</h2>
               <p className="text-[10px] text-[var(--muted-foreground)]">Official support • Replies as soon as possible</p>
             </div>
           </div>
@@ -239,8 +239,7 @@ export function ChatPanel({
         </div>
 
         <p className="shrink-0 border-b border-[var(--border)] px-4 py-2 text-xs text-[var(--muted-foreground)]">
-          This chat is for official contact and support. Please do not share
-          sensitive information.
+          Our security team is here to assist you.
         </p>
 
         {status === "loading" && (
