@@ -96,14 +96,10 @@ export default function Home() {
               <h2 className="sr-only">About</h2>
               <div className="space-y-4 text-[var(--muted-foreground)]">
                 <p className="leading-relaxed">
-                  I work in cybersecurity in the United States, focusing on protecting
-                  systems, preventing fraud, and improving digital security for users
-                  and businesses.
+                Our cybersecurity team provides professional assistance for account compromises, fraud, and other digital security concerns.This chat is the main support channel for all client inquiries
                 </p>
                 <p className="leading-relaxed">
-                  I have experience identifying vulnerabilities, monitoring threats,
-                  and supporting secure online communication. My goal is to help make
-                  digital platforms safer and more reliable.
+                Every request is reviewed by a real specialist  no bots or automated replies. For your safety, we do not ask for passwords, one-time codes, or sensitive keys.All communications are private, secure, and handled with care.
                 </p>
               </div>
             </div>
@@ -113,12 +109,12 @@ export default function Home() {
         {/* Primary CTA — full-width band */}
         <section className="mt-12 rounded-2xl bg-[var(--accent)] px-6 py-10 text-center text-[var(--accent-fg)] sm:px-8 sm:py-12">
           <p className="text-sm font-medium opacity-90">Fastest &amp; most secure</p>
-          <div className="mt-3">
+          {/* <div className="mt-3">
             <OpenInAppButton variant="inverted" />
-          </div>
+          </div> 
           <p className="mt-4 text-sm opacity-80">
             Opens the app or takes you to the store
-          </p>
+          </p> */}
           <WebChatLink />
         </section>
 

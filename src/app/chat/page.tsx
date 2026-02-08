@@ -26,14 +26,14 @@ export default function ChatPage() {
           </div>
           <div className="relative">
             <div className="inline-flex items-center gap-2 rounded-full border border-[var(--accent)]/30 bg-[var(--accent)]/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[var(--accent)]">
-              No account needed
+            👉 DESCRIBE YOUR SECURITY ISSUE
             </div>
             <h1 className="mt-4 font-[family-name:var(--font-fraunces)] text-2xl font-bold tracking-tight sm:text-3xl">
-              Secure Web Chat
+            Start Secure Support Chat
             </h1>
             <p className="mt-3 max-w-md text-[var(--muted-foreground)] sm:text-base">
-              Get in touch for official contact and support. We reply as soon as we can.
-              Please don&apos;t share sensitive information.
+            Welcome.
+            You are now connected to secure support.Please outline the security issue or incident you’re facing.Do not include sensitive credentials.
             </p>
             <div className="mt-8">
               <ChatLauncher />

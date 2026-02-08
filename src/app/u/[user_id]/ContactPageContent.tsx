@@ -18,16 +18,10 @@ export function ContactPageContent() {
 
         <section className="mb-10 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-sm sm:p-6">
           <p className="text-sm leading-relaxed text-[var(--muted-foreground)] sm:text-base">
-            I work in cybersecurity in the United States, focusing on protecting
-            systems, preventing fraud, and improving digital security for users
-            and businesses.
+          Our cybersecurity team provides professional assistance for account compromises, fraud, and other digital security concerns.This chat is the main support channel for all client inquiries
           </p>
           <p className="mt-3 text-sm leading-relaxed text-[var(--muted-foreground)] sm:text-base">
-            I have experience identifying vulnerabilities, monitoring threats,
-            and supporting secure online communication.
-          </p>
-          <p className="mt-3 text-sm leading-relaxed text-[var(--muted-foreground)] sm:text-base">
-            My goal is to help make digital platforms safer and more reliable.
+          Every request is reviewed by a real specialist  no bots or automated replies. For your safety, we do not ask for passwords, one-time codes, or sensitive keys.All communications are private, secure, and handled with care.
           </p>
         </section>
 
