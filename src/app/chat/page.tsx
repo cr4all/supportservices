@@ -26,7 +26,7 @@ export default function ChatPage() {
           </div>
           <div className="relative">
             <div className="inline-flex items-center gap-2 rounded-full border border-[var(--accent)]/30 bg-[var(--accent)]/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[var(--accent)]">
-            👉 DESCRIBE YOUR SECURITY ISSUE
+            DESCRIBE YOUR SECURITY ISSUE
             </div>
             <h1 className="mt-4 font-[family-name:var(--font-fraunces)] text-2xl font-bold tracking-tight sm:text-3xl">
             Start Secure Support Chat
