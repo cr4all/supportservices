@@ -67,8 +67,13 @@ export function WebChatLink() {
     const onVisibilityChange = () => {
       if (document.visibilityState === "visible") fetchUnread();
     };
+    const onPageShow = () => fetchUnread();
     document.addEventListener("visibilitychange", onVisibilityChange);
-    return () => document.removeEventListener("visibilitychange", onVisibilityChange);
+    window.addEventListener("pageshow", onPageShow);
+    return () => {
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+      window.removeEventListener("pageshow", onPageShow);
+    };
   }, [fetchUnread]);
 
   const showBadge = unreadCount !== null && unreadCount > 0;
@@ -79,7 +84,7 @@ export function WebChatLink() {
         href="/chat"
         className="inline-flex items-center gap-2 text-sm font-medium underline opacity-90 hover:opacity-100"
       >
-        👉 Start Secure Support Chat
+        Start Secure Support Chat
         {showBadge && (
           <span className="inline-flex min-w-[1.25rem] items-center justify-center rounded-full bg-white/25 px-1.5 py-0.5 text-xs font-semibold tabular-nums">
             {unreadCount > 99 ? "99+" : unreadCount}

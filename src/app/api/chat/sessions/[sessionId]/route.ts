@@ -77,6 +77,13 @@ export async function PATCH(
         { read: true }
       );
     }
+    // Mark admin messages as read when visitor views the chat (clears main-page badge).
+    if (body.markAdminMessagesRead === true) {
+      await ChatMessage.updateMany(
+        { sessionId: new mongoose.Types.ObjectId(sessionId), sender: "admin" },
+        { read: true }
+      );
+    }
 
     return NextResponse.json({
       _id: session._id.toString(),

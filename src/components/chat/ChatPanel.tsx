@@ -48,9 +48,11 @@ export function ChatPanel({
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [showContactPopup, setShowContactPopup] = useState(false);
   const contactInfoSentRef = useRef(false);
+  const shouldFocusAfterSendRef = useRef(false);
   const listRef = useRef<HTMLDivElement>(null);
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const hasMarkedAdminReadRef = useRef(false);
 
   const adjustTextareaHeight = useCallback(() => {
     const ta = textareaRef.current;
@@ -63,6 +65,13 @@ export function ChatPanel({
   useEffect(() => {
     adjustTextareaHeight();
   }, [input, adjustTextareaHeight]);
+
+  useEffect(() => {
+    if (status === "ready" && shouldFocusAfterSendRef.current) {
+      shouldFocusAfterSendRef.current = false;
+      textareaRef.current?.focus();
+    }
+  }, [status]);
 
   const ensureSession = useCallback(async () => {
     const visitorId = getVisitorId();
@@ -131,6 +140,17 @@ export function ChatPanel({
     };
   }, [sessionId, status, fetchMessages]);
 
+  // Mark admin messages as read when visitor views the chat (clears main-page unread badge).
+  useEffect(() => {
+    if (!sessionId || status !== "ready" || hasMarkedAdminReadRef.current) return;
+    hasMarkedAdminReadRef.current = true;
+    fetch(`/api/chat/sessions/${sessionId}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ markAdminMessagesRead: true }),
+    }).catch(() => {});
+  }, [sessionId, status]);
+
   useEffect(() => {
     listRef.current?.scrollTo(0, listRef.current.scrollHeight);
   }, [messages]);
@@ -151,6 +171,7 @@ export function ChatPanel({
       if (!res.ok) {
         const err = await res.json().catch(() => ({}));
         setErrorMessage(err.error || "Failed to send.");
+        shouldFocusAfterSendRef.current = true;
         setStatus("ready");
         return;
       }
@@ -162,12 +183,18 @@ export function ChatPanel({
     } catch {
       setErrorMessage("Failed to send.");
     }
+    shouldFocusAfterSendRef.current = true;
     setStatus("ready");
+  };
+
+  const closeContactPopupAndFocusInput = () => {
+    setShowContactPopup(false);
+    setTimeout(() => textareaRef.current?.focus(), 0);
   };
 
   const submitContactPopup = () => {
     if (!sessionId || contactInfoSentRef.current) {
-      setShowContactPopup(false);
+      closeContactPopupAndFocusInput();
       return;
     }
     if (name.trim() || email.trim()) {
@@ -181,7 +208,7 @@ export function ChatPanel({
         }),
       }).catch(() => {});
     }
-    setShowContactPopup(false);
+    closeContactPopupAndFocusInput();
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -421,7 +448,7 @@ export function ChatPanel({
               <div className="mt-5 flex gap-2">
                 <button
                   type="button"
-                  onClick={() => setShowContactPopup(false)}
+                  onClick={closeContactPopupAndFocusInput}
                   className="flex-1 rounded-xl border border-[var(--border)] bg-[var(--background)] px-4 py-2.5 text-sm font-medium text-[var(--foreground)] transition hover:bg-[var(--muted)]/50"
                 >
                   Skip

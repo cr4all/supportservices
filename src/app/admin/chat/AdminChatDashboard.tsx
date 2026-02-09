@@ -55,6 +55,7 @@ export function AdminChatDashboard() {
   const [sessionsLoading, setSessionsLoading] = useState(true);
   const [sendStatus, setSendStatus] = useState<"idle" | "sending" | "error">("idle");
   const listRef = useRef<HTMLDivElement>(null);
+  const shouldFocusAfterSendRef = useRef(false);
   const sessionsPollRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const messagesPollRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -124,6 +125,13 @@ export function AdminChatDashboard() {
     adjustTextareaHeight();
   }, [reply, adjustTextareaHeight]);
 
+  useEffect(() => {
+    if (sendStatus === "idle" && shouldFocusAfterSendRef.current) {
+      shouldFocusAfterSendRef.current = false;
+      textareaRef.current?.focus();
+    }
+  }, [sendStatus]);
+
   const selectedSession = sessions.find((s) => s._id === selectedId);
 
   const handleSendReply = async () => {
@@ -146,6 +154,7 @@ export function AdminChatDashboard() {
     } catch {
       setSendStatus("error");
     }
+    shouldFocusAfterSendRef.current = true;
     setSendStatus("idle");
   };
 
